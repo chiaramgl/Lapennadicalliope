@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Penna di Calliope</title>
+    <!-- Aggiungi il link a Font Awesome per le icone -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Logo" class="logo"> <!-- Inserisci il tuo logo qui -->
+        <h1>La Penna di Calliope</h1>
+        <nav>
+            <a href="#" onclick="showPage('home.html')">Home</a>
+            <a href="#" onclick="showPage('chi_siamo.html')">Chi Siamo</a>
+            <a href="#" onclick="showPage('dove_siamo.html')">Dove Siamo</a>
+            <a href="#" onclick="showPage('contatti.html')">Contatti</a>
+            <a href="#" onclick="showPage('poesie.html')">Poesie</a>
+            <a href="#" onclick="showPage('eventi.html')">Eventi</a>
+        </nav>
+        <div class="social-icons">
+            <a href="https://wa.me/yourwhatsapplink" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://facebook.com/yourfacebooklink" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://instagram.com/yourinstagramlink" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+    </header>
+    <main id="main-content">
+        <object type="text/html" data="home.html"></object>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

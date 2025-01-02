@@ -1,0 +1,18 @@
+<div id="poesie" class="container hidden">
+    <h2>Poesie</h2>
+    <div id="entriesContainer">
+        <!-- Le poesie/entrate verranno aggiunte qui -->
+    </div>
+    <button class="add-button" onclick="apriForm()">+</button>
+    <div id="formModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="chiudiForm()">&times;</span>
+            <div class="form-container">
+                <input type="text" id="entryTitle" placeholder="Titolo">
+                <textarea id="entryContent" rows="4" placeholder="Contenuto"></textarea>
+                <input type="text" id="entryAuthor" placeholder="Firma">
+                <button onclick="inviaRichiesta()">Invia Richiesta</button>
+            </div>
+        </div>
+    </div>
+</div>
