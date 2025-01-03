@@ -1,35 +1,3 @@
-function showPage(page) {
-    const mainContent = document.getElementById('main-content');
-    mainContent.innerHTML = `<object type="text/html" data="${page}"></object>`;
-}
-
-// Funzioni per gestire il form delle poesie
-function apriForm() {
-    document.getElementById('formModal').style.display = 'block';
-}
-
-function chiudiForm() {
-    document.getElementById('formModal').style.display = 'none';
-}
-
-function inviaRichiesta() {
-    // Logica per inviare la richiesta
-}
-
-function aggiungiFoto() {
-    // Logica per aggiungere una foto
-}
-// script.js
-document.getElementById('question-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-    alert('Il modulo non verrà inviato via email.');
-});
-// script.js
-document.getElementById('question-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-    window.open('url-della-tua-pagina-modulo.html', '_blank');
-    alert('Il modulo non verrà inviato via email.');
-});
 // script.js
 document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.getElementById('hamburger');
@@ -44,5 +12,19 @@ document.addEventListener('DOMContentLoaded', function() {
     overlay.addEventListener('click', function() {
         menu.classList.remove('open');
         overlay.classList.remove('open');
+    });
+
+    // Gestione invio form con EmailJS
+    const form = document.getElementById('poesie-form');
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
+            .then(function() {
+                alert('Poesia inviata con successo!');
+                form.reset();
+            }, function(error) {
+                alert('Errore nell\'invio della poesia: ' + JSON.stringify(error));
+            });
     });
 });
