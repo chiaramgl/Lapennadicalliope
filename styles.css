@@ -4,7 +4,8 @@
 body {
     background-color: #1e1e1e; /* Nero */
     color: #E6E6FA; /* Lilla */
-    font-family: Arial, sans-serif;
+    font-family: 'Garamond', serif;
+    font-weight: bold;
     margin: 0;
     padding: 0;
 }
@@ -12,13 +13,19 @@ body {
 header {
     background-color: #9370DB; /* Lilla */
     color: #FFFFFF; /* Bianco */
-}
-
-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo img {
+    max-width: 150px;
 }
 
 .menu {
@@ -26,15 +33,19 @@ nav {
     padding: 0;
     margin: 0;
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .menu li {
-    margin: 0 10px;
+    margin: 10px 0;
 }
 
 .menu a {
     color: #FFFFFF; /* Bianco */
     text-decoration: none;
+    font-size: 18px;
+    text-shadow: 2px 2px 4px #000000; /* Ombra */
 }
 
 .menu a:hover {
@@ -55,6 +66,7 @@ nav {
         display: none;
         flex-direction: column;
         width: 100%;
+        align-items: flex-start;
     }
     
     .menu-toggle {
@@ -108,4 +120,16 @@ button {
 
 button:hover {
     background-color: #BA55D3; /* Un altro tono di lilla */
+}
+
+.large-image img {
+    width: 100%;
+    height: 50vh;
+    object-fit: cover;
+    display: block;
+}
+
+.content {
+    padding: 20px;
+    text-align: center;
 }
