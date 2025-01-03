@@ -14,17 +14,18 @@ document.addEventListener('DOMContentLoaded', function() {
         overlay.classList.remove('open');
     });
 
-    // Gestione invio form con EmailJS
+    // Gestione invio form senza inviare richieste reali
     const form = document.getElementById('poesie-form');
     form.addEventListener('submit', function(event) {
         event.preventDefault();
+        alert('Poesia inviata con successo!');
+        form.reset();
+    });
 
-        emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
-            .then(function() {
-                alert('Poesia inviata con successo!');
-                form.reset();
-            }, function(error) {
-                alert('Errore nell\'invio della poesia: ' + JSON.stringify(error));
-            });
+    // Effetto scroll per l'immagine grande sulla home page
+    const largeImage = document.querySelector('.large-image img');
+    window.addEventListener('scroll', function() {
+        const scrollValue = window.scrollY;
+        largeImage.style.transform = `translateY(${scrollValue * 0.5}px)`;
     });
 });
