@@ -203,3 +203,45 @@ main {
     text-decoration: none;
     cursor: pointer;
 }
+/* Stili per dispositivi con larghezza massima di 600px (ad esempio, cellulari) */
+@media only screen and (max-width: 600px) {
+    body {
+        font-size: 16px;
+    }
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+/* Stili per dispositivi con larghezza massima di 768px (ad esempio, tablet) */
+@media only screen and (max-width: 768px) {
+    body {
+        font-size: 18px;
+    }
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+}
+
+/* Stili per dispositivi con larghezza superiore a 768px (ad esempio, desktop) */
+@media only screen and (min-width: 769px) {
+    body {
+        font-size: 20px;
+    }
+    .container {
+        width: 80%;
+        padding: 30px;
+    }
+}
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
