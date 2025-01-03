@@ -24,3 +24,9 @@ document.getElementById('question-form').addEventListener('submit', function(eve
     event.preventDefault();
     alert('Il modulo non verrà inviato via email.');
 });
+// script.js
+document.getElementById('question-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    window.open('url-della-tua-pagina-modulo.html', '_blank');
+    alert('Il modulo non verrà inviato via email.');
+});
