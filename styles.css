@@ -2,8 +2,8 @@
 
 /* Imposta il colore di sfondo principale e il colore del testo */
 body {
-    background-color: #E6E6FA; /* Lilla */
-    color: #000000; /* Nero */
+    background-color: #1e1e1e; /* Nero */
+    color: #E6E6FA; /* Lilla */
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -87,10 +87,12 @@ form {
     height: calc(100vh - 150px); /* Altezza dinamica */
     padding: 10px;
     font-size: 16px;
-    border: 1px solid #000000; /* Nero */
+    border: 1px solid #9370DB; /* Lilla */
     border-radius: 4px;
     resize: none;
     box-sizing: border-box;
+    background-color: #1e1e1e; /* Nero */
+    color: #E6E6FA; /* Lilla */
 }
 
 button {
