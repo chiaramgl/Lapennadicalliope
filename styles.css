@@ -21,7 +21,8 @@ header {
 
 nav {
     display: flex;
-    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .logo img {
@@ -33,12 +34,10 @@ nav {
     padding: 0;
     margin: 0;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
 }
 
 .menu li {
-    margin: 10px 0;
+    margin: 0 10px;
 }
 
 .menu a {
@@ -62,11 +61,20 @@ nav {
 
 /* Menu a tendina per dispositivi mobili */
 @media (max-width: 768px) {
+    .logo {
+        width: 100%;
+        text-align: center;
+    }
+
     .menu {
         display: none;
         flex-direction: column;
         width: 100%;
         align-items: flex-start;
+    }
+
+    .menu li {
+        margin: 10px 0;
     }
     
     .menu-toggle {
