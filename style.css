@@ -5,52 +5,72 @@ body {
     background-color: #E6E6FA; /* Lilla */
     color: #000000; /* Nero */
     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-/* Esempio di modifica per i link */
-a {
-    color: #9370DB; /* Un tono di lilla */
+header {
+    background-color: #9370DB; /* Lilla */
+    color: #FFFFFF; /* Bianco */
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.menu li {
+    margin: 0 10px;
+}
+
+.menu a {
+    color: #FFFFFF; /* Bianco */
     text-decoration: none;
 }
 
-a:hover {
-    color: #BA55D3; /* Un altro tono di lilla */
+.menu a:hover {
+    text-decoration: underline;
 }
 
-/* Esempio di modifica per i pulsanti */
-button {
-    background-color: #9370DB; /* Lilla */
-    color: #FFFFFF; /* Bianco */
-    border: 2px solid #000000; /* Nero */
-    padding: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 4px;
+.menu-toggle {
+    display: none;
 }
 
-button:hover {
-    background-color: #BA55D3; /* Un altro tono di lilla */
+.overlay {
+    display: none;
 }
 
-/* Esempio di modifica per i contenitori */
-.container {
-    background-color: #E6E6FA; /* Lilla */
-    border: 2px solid #000000; /* Nero */
-    padding: 20px;
-    margin: 10px 0;
-}
-
-/* Esempio di modifica per i titoli */
-h1, h2, h3, h4, h5, h6 {
-    color: #9370DB; /* Lilla */
-}
-
-/* Esempio di modifica per le sezioni */
-section {
-    background-color: #E6E6FA; /* Lilla */
-    border-bottom: 2px solid #000000; /* Nero */
-    padding: 20px;
-    margin: 10px 0;
+/* Menu a tendina per dispositivi mobili */
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
+    .overlay {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 1;
+    }
 }
 
 /* Stili per il modulo */
@@ -59,11 +79,12 @@ form {
     max-width: 600px;
     display: flex;
     flex-direction: column;
+    margin: 20px auto;
 }
 
 #question-box {
     width: 100%;
-    height: calc(100vh - 100px); /* Altezza dinamica */
+    height: calc(100vh - 150px); /* Altezza dinamica */
     padding: 10px;
     font-size: 16px;
     border: 1px solid #000000; /* Nero */
