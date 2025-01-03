@@ -19,3 +19,8 @@ function inviaRichiesta() {
 function aggiungiFoto() {
     // Logica per aggiungere una foto
 }
+// script.js
+document.getElementById('question-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    alert('Il modulo non verrà inviato via email.');
+});
