@@ -1,210 +1,33 @@
 <!DOCTYPE html>
 <html lang="it">
-    <head>
-   
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Penna di Calliope</title>
-    <!-- Aggiungi il link a Font Awesome per le icone -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <!-- Aggiungi il link a Quill per l'editor di testo -->
-    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <style>
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.8); /* Sfondo semi-trasparente */
-        }
-
-        .modal-content {
-            background-color: #fefefe;
-            margin: 0; /* Rimuovi i margini per coprire l'intero schermo */
-            padding: 20px;
-            border: none;
-            width: 100%;  /* Larghezza del 100% dello schermo */
-            height: 100%; /* Altezza del 100% dello schermo */
-            font-family: "Garamond", serif;
-            font-size: 12px;
-            box-sizing: border-box; /* Include padding e border nella larghezza e altezza */
-        }
-
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .form-container input[type="text"], .form-container textarea {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-            font-family: "Garamond", serif;
-            font-size: 12px;
-        }
-
-        .form-container button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 14px 20px;
-            margin: 8px 0;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        .form-container button:hover {
-            opacity: 0.8;
-        }
-
-        .quill-editor {
-            height: calc(100% - 160px); /* Calcola l'altezza rimanente */
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <img src="logo.png" alt="Logo" class="logo"> <!-- Inserisci il tuo logo qui -->
-        <h1>La Penna di Calliope</h1>
-        <nav>
-            <a href="#" onclick="showPage('home.html')">Home</a>
-            <a href="#" onclick="showPage('chi_siamo.html')">Chi Siamo</a>
-            <a href="#" onclick="showPage('dove_siamo.html')">Dove Siamo</a>
-            <a href="#" onclick="showPage('contatti.html')">Contatti</a>
-            <a href="#" onclick="showPage('poesie.html')">Poesie</a>
-            <a href="#" onclick="showPage('eventi.html')">Eventi</a>
-        </nav>
-        <div class="social-icons">
-            <a href="https://wa.me/yourwhatsapplink" target="_blank"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://facebook.com/yourfacebooklink" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://instagram.com/yourinstagramlink" target="_blank"><i class="fab fa-instagram"></i></a>
-        </div>
-    </header>
-    <main id="main-content">
-        <object id="page-content" type="text/html" data="home.html"></object>
-    </main>
-    <div id="formModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="chiudiForm()">&times;</span>
-            <div class="form-container">
-                <input type="text" id="entryTitle" placeholder="Titolo">
-                <div id="editorContainer" class="quill-editor"></div>
-                <input type="text" id="entryAuthor" placeholder="Firma">
-                <button onclick="inviaRichiesta()">Invia Richiesta</button>
-            </div>
-        </div>
-    </div>
-    <!-- Aggiungi i link a Quill e il tuo script -->
-    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var quill = new Quill('#editorContainer', {
-                theme: 'snow',
-                modules: {
-                    toolbar: [
-                        ['bold', 'italic', 'underline'],
-                        [{ 'align': [] }],
-                        [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-                    ]
-                },
-                placeholder: 'Contenuto',
-            });
-
-            window.apriForm = function() {
-                document.getElementById('formModal').style.display = "block";
-            };
-
-            window.chiudiForm = function() {
-                document.getElementById('formModal').style.display = "none";
-            };
-
-            window.inviaRichiesta = async function() {
-                const title = document.getElementById('entryTitle').value;
-                const content = quill.root.innerHTML;
-                const author = document.getElementById('entryAuthor').value;
-
-                if (title && content && author) {
-                    try {
-                        const response = await fetch('https://tuo-dominio.com/api/send-email', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                            body: JSON.stringify({
-                                title: title,
-                                content: content,
-                                author: author,
-                            }),
-                        });
-
-                        if (response.ok) {
-                            alert('Poesia inviata con successo!');
-                            chiudiForm();
-                        } else {
-                            alert('Errore durante l\'invio della poesia.');
-                        }
-                    } catch (error) {
-                        alert('Errore durante l\'invio della poesia.');
-                    }
-                } else {
-                    alert('Compila tutti i campi.');
-                }
-            };
-
-            window.showPage = function(page) {
-                const objectElement = document.getElementById('page-content');
-                objectElement.setAttribute('data', page);
-            };
-        });
-    </script>
-</body>
-</html>
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <!-- Contenuto della colonna -->
-        </div>
-        <div class="col-md-6">
-            <!-- Contenuto della colonna -->
-        </div>
-    </div>
-</div>
- <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<!DOCTYPE html>
-<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Box Domande</title>
+    <title>Home - La Penna di Calliope</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="form-container">
-        <form id="question-form">
-            <textarea id="question-box" name="question" placeholder="Scrivi la tua domanda qui..."></textarea>
-            <button type="submit">Invia</button>
-        </form>
-    </div>
+    <header>
+        <nav>
+            <div class="menu-toggle" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="overlay"></div>
+            <div class="container">
+                <ul class="menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="poesie.html">Poesie</a></li>
+                    <li><a href="richiesta.html" target="_blank">Richiesta Poesie</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h1>Benvenuti a La Penna di Calliope</h1>
+            <p>Un luogo dove la poesia prende vita.</p>
+        </section>
+    </main>
     <script src="script.js"></script>
 </body>
 </html>
-<form id="question-form" action="#">
