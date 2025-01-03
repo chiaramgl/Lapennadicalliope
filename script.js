@@ -30,3 +30,19 @@ document.getElementById('question-form').addEventListener('submit', function(eve
     window.open('url-della-tua-pagina-modulo.html', '_blank');
     alert('Il modulo non verrà inviato via email.');
 });
+// script.js
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.getElementById('hamburger');
+    const menu = document.querySelector('.menu');
+    const overlay = document.querySelector('.overlay');
+
+    hamburger.addEventListener('click', function() {
+        menu.classList.toggle('open');
+        overlay.classList.toggle('open');
+    });
+
+    overlay.addEventListener('click', function() {
+        menu.classList.remove('open');
+        overlay.classList.remove('open');
+    });
+});
