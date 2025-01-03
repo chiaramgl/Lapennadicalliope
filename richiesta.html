@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Richiesta Poesie - La Penna di Calliope</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("YOUR_USER_ID"); // Sostituisci YOUR_USER_ID con il tuo user_id di EmailJS
+        })();
+    </script>
+</head>
+<body>
+    <main>
+        <section>
+            <h1>Richiesta Poesie</h1>
+            <form id="poesie-form">
+                <textarea id="question-box" name="poesia" placeholder="Scrivi la tua poesia qui..."></textarea>
+                <button type="submit">Invia</button>
+            </form>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
